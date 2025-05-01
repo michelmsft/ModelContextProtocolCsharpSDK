@@ -11,9 +11,9 @@ using System.Threading;
 
 // === SETUP: Azure OpenAI Chat Completion ===
 var azureOpenAiService = new AzureOpenAIChatCompletionService(
-    deploymentName: "gpt-35-turbo", // Your deployment name
-    endpoint: "https://ai-demoaihub501352986224.openai.azure.com/",
-    apiKey: "4cgNb297ZcT2aUVhXAiURJe1vubOGyjqiI9QjqAuxcs4fuQRIDxMJQQJ99BCACHYHv6XJ3w3AAAAACOGxtog"
+    deploymentName: "AZURE_OPENAI_MODEL_DEPLOYMENT_NAME", // Your deployment name
+    endpoint: "AZURE_OPENAI_ENDPOINT",
+    apiKey: "AZURE_OPENAI_KEY"
 );
 
 
