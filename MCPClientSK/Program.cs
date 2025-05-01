@@ -97,20 +97,6 @@ public class McpPlugins
         _mcpClient = mcpClient;
     }
 
-/*     [KernelFunction("SummarizeFromUrl"), Description("Summarizes content from a URL using an MCP server tool")]
-    public async Task<string> SummarizeFromUrlAsync(
-        [Description("The URL to summarize")] string url,
-        CancellationToken cancellationToken = default)
-    {
-        var result = await _mcpClient.CallToolAsync(
-            "SummarizeContentFromUrl",
-            new Dictionary<string, object?> { ["url"] = url },
-             null,
-             null,
-            cancellationToken);
-        Console.WriteLine($"\ndoc: {result.Content.ToString()}\n");
-        return result.Content.FirstOrDefault(c => c.Type == "text")?.Text ?? "No summary returned.";
-    } */
 
     [KernelFunction("TranslateInEnglish"), Description("Always translate the input to English if it's not already in English.")]
     public async Task<string> DetectAndTranslateIfNeeded(
@@ -131,8 +117,3 @@ public class McpPlugins
 
 }
 
-
-//please download this file and summarize it https://westoahu.hawaii.edu/noeaucenter/wp-content/uploads/2021/12/APA-7th-ed.-Student-version-Sample-Paper-Final.pdf
-
-
-//https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/how-to/conversation-summarization
