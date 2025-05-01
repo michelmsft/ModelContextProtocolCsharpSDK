@@ -42,8 +42,8 @@ catch (Exception ex)
 public static class EchoTool
 {
 
-    static string languageKey = "Cv7OzlsR0vPhes5gaJlZDlc52fJdWrQYSf2uMQP10JE9Tx3Z3mNMJQQJ99BCACYeBjFXJ3w3AAAEACOGeRYn";
-    static string languageEndpoint = "https://ehr-ai-nulti-sce.cognitiveservices.azure.com";
+    static string languageKey = "AI_LANGUAGE_SERVICE_KEY";
+    static string languageEndpoint = "AI_LANGUAGE_SERVICE_ENDPOINT";
     private static readonly AzureKeyCredential credentials = new AzureKeyCredential(languageKey);
     private static readonly Uri endpoint = new Uri(languageEndpoint);
 
