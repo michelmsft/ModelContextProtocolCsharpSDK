@@ -1,5 +1,3 @@
-﻿// Install-Package ModelContextProtocol -Version 0.1.0-preview.11
-
 using Azure;
 using Azure.AI.TextAnalytics;
 using Microsoft.Extensions.AI;
@@ -12,22 +10,18 @@ using ModelContextProtocol.Server;
 using System.ComponentModel;
 using System.Text.Json;
 
+// Configure all logs to go to stderr
+
 var builder = Host.CreateApplicationBuilder(args);
 builder.Logging.AddConsole(consoleLogOptions =>
 {
-    // Configure all logs to go to stderr
     consoleLogOptions.LogToStandardErrorThreshold = LogLevel.Trace;
 });
-
-
-
 
 builder.Services
     .AddMcpServer()
     .WithStdioServerTransport()
     .WithToolsFromAssembly();
-
-
 try
 {
     await builder.Build().RunAsync();
@@ -36,12 +30,11 @@ catch (Exception ex)
 {
     Console.Error.WriteLine($"[MCP Server Fatal Error] {ex}");
 }
-//await builder.Build().RunAsync();
+
 
 [McpServerToolType]
-public static class EchoTool
+public static class McpServerToolBox
 {
-
     static string languageKey = "AI_LANGUAGE_SERVICE_KEY";
     static string languageEndpoint = "AI_LANGUAGE_SERVICE_ENDPOINT";
     private static readonly AzureKeyCredential credentials = new AzureKeyCredential(languageKey);
@@ -49,10 +42,6 @@ public static class EchoTool
 
     [McpServerTool, Description("Echoes the message back to the client.")]
     public static string Echo(string message) => $"hello {message}";
-
-
-
-
 
     [McpServerTool(Name = "SummarizeContentFromUrl"), Description("Summarizes content from a given URL.")]
     public static async Task<string> SummarizeContentFromUrl(
@@ -139,10 +128,6 @@ public static class EchoTool
         }
     }
 
-
-
-
-
     [McpServerTool(Name = "TranslateToEnglish"), Description("Translates input text into English.")]
     public static async Task<string> TranslateToEnglish(
         IMcpServer thisServer,
@@ -150,7 +135,6 @@ public static class EchoTool
         CancellationToken cancellationToken)
     {
         var logger = LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger("TranslateToEnglish");
-
         try
         {
             logger.LogInformation("Starting translation to English...");
@@ -188,9 +172,6 @@ public static class EchoTool
             return "Error: Translation failed.";
         }
     }
-
-
-
 
 }
 
